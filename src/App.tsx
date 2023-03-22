@@ -1,16 +1,19 @@
-import React from 'react';
-import { KakaoMap } from './kakao-map';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
+// Pages
+import MainPage from "./pages/main";
 
 function App() {
+  const 
+
   return (
     <>
-    <KakaoMap />
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+    </Router>
     </>
   );
 }
