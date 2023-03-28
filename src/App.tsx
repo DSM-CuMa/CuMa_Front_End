@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/main";
 
 function App() {
-  const 
-
   return (
     <>
     <Router>
@@ -19,3 +17,4 @@ function App() {
 }
 
 export default App;
+
