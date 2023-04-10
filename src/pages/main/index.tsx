@@ -13,7 +13,7 @@ import Logo from "../../assets/images/logo.png";
 function MainPage(): React.ReactElement {
     const [imageIndex, setImageIndex] = useState(0);
     const images = [Background1, Background2, Background3, Background4];
-
+    
     useEffect(() => {
         const intervalld = setInterval(() => {
             setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -22,9 +22,8 @@ function MainPage(): React.ReactElement {
     }, [images.length]);
     return(
         <S.Layout>
-            <S.Background src={images[imageIndex]} alt="slider">
-
-            </S.Background>
+            <S.Background src="images" ></S.Background>
+            
         </S.Layout>
     );
 }
