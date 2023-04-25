@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Styles
 import * as S from "./style";
 
 // Images
-import Background1 from "../../assets/images/background 1.png";
-import Background2 from "../../assets/images/background 2.png";
-import Background3 from "../../assets/images/background 3.png";
-import Background4 from "../../assets/images/background 4.png";
 import Logo from "../../assets/images/logo.png";
 
 function MainPage(): React.ReactElement {
-    const [imageIndex, setImageIndex] = useState(0);
-    const images = [Background1, Background2, Background3, Background4];
-    
-    useEffect(() => {
-        const intervalld = setInterval(() => {
-            setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 3000);
-        return () => clearInterval(intervalld);
-    }, [images.length]);
+    const navigate = useNavigate();
     return(
-        <S.Layout>
-            <S.Background src="images" ></S.Background>
-            
-        </S.Layout>
+        <S.Background>
+            <S.LogoWrapper>
+                <S.Logo src={Logo} />
+            </S.LogoWrapper>
+            <S.IntroWrapper>
+                <S.Intro>맵핀 공유 서비스 <S.MintColor>CuMa</S.MintColor> 다양한 사람들과 장소를 공유해보세요!</S.Intro>
+                <S.BtnWrapper>
+                    <S.TryBtn onClick={() => navigate("/login")}>시작하기</S.TryBtn>
+                </S.BtnWrapper>
+            </S.IntroWrapper>
+        </S.Background>
     );
 }
 
