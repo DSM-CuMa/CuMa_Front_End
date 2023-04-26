@@ -12,7 +12,7 @@ function MainPage(): React.ReactElement {
     return(
         <S.Background>
             <S.LogoWrapper>
-                <S.Logo src={Logo} />
+                <img src={Logo} />
             </S.LogoWrapper>
             <S.IntroWrapper>
                 <S.Intro>맵핀 공유 서비스 <S.MintColor>CuMa</S.MintColor> 다양한 사람들과 장소를 공유해보세요!</S.Intro>

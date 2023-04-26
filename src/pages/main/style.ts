@@ -16,10 +16,9 @@ export const Background = styled.div`
 export const LogoWrapper = styled.div`
     width: 500px;
     height: 500px;
+    margin-top: 100px;
     margin-right: 338px;
-`;
-
-export const Logo = styled.img`
+    user-select: none;
 `;
 
 export const IntroWrapper = styled.div`
