@@ -1,4 +1,7 @@
 import react, { useState } from "react";
+import axios from 'axios';
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 // Style
 import * as S from "./style";
@@ -10,11 +13,59 @@ import MapPin from "../../assets/images/RedMapPin.png";
 function LoginPage():React.ReactElement {
     const [accountId, setAccountId] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    async function Login() {
+        axios.post("api url", {
+            accountId: accountId,
+            password: password,
+        })
+        .then((res) => {
+            console.log(res);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+            Toast.fire({
+                icon: "success",
+                title: "로그인에 성공하였습니다.",
+            });
+        })
+        .catch((err) => {
+            if(err.response){
+                console.log(err.response.data);
+                console.log(err.response.status);
+                console.log(err.response.header);
+            }
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+            Toast.fire({
+                icon: "error",
+                title: "관리자 로그인에 실패하였습니다.",
+            });
+        })
+    }
     return(
         <S.Layout>
             <S.LoginWrapper>
                 <S.PinImage>
-                    <S.Pin src={MapPin} />
+                    <img src={MapPin} />
                 </S.PinImage>
                 <S.Title>로그인</S.Title>
                 <S.InputWrapper>
@@ -34,10 +85,22 @@ function LoginPage():React.ReactElement {
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="비밀번호를 입력하세요."
                     />
+                    <S.CheckBoxWrapper>
+                        <S.IdSave
+                            type={"checkbox"}
+                        />
+                        <S.CheckBoxName>아이디 저장</S.CheckBoxName>
+                        <S.LinkWrapper>
+                            <S.SignUpLink onClick={() => navigate("/signup")}>계정이 없으신가요?</S.SignUpLink>
+                        </S.LinkWrapper>
+                    </S.CheckBoxWrapper>
                 </S.InputWrapper>
+                <S.BtnWrapper>
+                    <S.SubmitBtn>확인</S.SubmitBtn>
+                </S.BtnWrapper>
             </S.LoginWrapper>
             <S.MapImage>
-                <S.Map src={MapImg} />
+                <img src={MapImg} />
             </S.MapImage>
         </S.Layout>
     );
