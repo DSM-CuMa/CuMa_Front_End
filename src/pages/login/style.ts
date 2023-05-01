@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import "../../assets/fonts/font.css";
-import { type } from "os";
 
 export const Layout = styled.div`
     width: 100%;
@@ -44,7 +43,7 @@ export const MapImage = styled.div`
 `;
 
 export const InputWrapper = styled.div`
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 `;
 
 export const InputName = styled.div`
@@ -104,6 +103,7 @@ export const CheckBoxName = styled.div`
 export const LinkWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
+    margin-left: 255px;
 `;
 
 export const SignUpLink = styled.div`
