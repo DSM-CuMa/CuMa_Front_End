@@ -37,6 +37,7 @@ function LoginPage():React.ReactElement {
                 icon: "success",
                 title: "로그인에 성공하였습니다.",
             });
+            localStorage.setItem("CuMa_atk", res.data.atk);
             navigate("/map", {replace: true});
         })
         .catch((err) => {
