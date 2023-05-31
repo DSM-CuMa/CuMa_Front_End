@@ -18,7 +18,7 @@ function SignUpPage():React.ReactElement {
     const navigate = useNavigate();
 
     async function SignUp() {
-        axios.post("api url", {
+        axios.post("http://localhost:3001/signup", {
             accountId: accountId,
             email: email,
             password: password

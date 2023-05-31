@@ -12,7 +12,7 @@ export const ShareBtn = styled.div`
     height: 30px;
     background-color: #8362C3;
     border-radius: 7px;
-    box-shadow: 1px 1px 3px 1px #dadce0;
+    box-shadow: 0 2px 2px gray inset;
     font-family: 'ONEPOP';
     font-style: normal;
     font-weight: 400;
@@ -21,6 +21,7 @@ export const ShareBtn = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 90px;
     :hover{
         cursor: pointer;
     }
