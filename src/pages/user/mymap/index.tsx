@@ -15,7 +15,15 @@ function MyPage(): React.ReactElement {
     const [isOpen, setIsOpen] = useState(false);
     const [isClick, setIsClick] = useState(false);
     const [position, setPosition] = useState<any>();
+    const [latitude, setLatitude] = useState<any>();
+    const [longitude, setLongitude] = useState<any>();
 
+    kakao.maps.event.addListener(map, 'click', function(mouseEvent: { latLng: any; }){
+        const latLng = mouseEvent.latLng;
+        setLatitude(latLng.getLat())
+        setLongitude(latLng.getLng())
+        
+    })
     const toggleSide = () => {
         setIsOpen(true);
     };
