@@ -125,7 +125,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const SubmitBtn = styled.button`
-    width: 500px;
+    width: 466px;
     height: 50px;
     font-family: 'ONEPOP';
     font-style: normal;

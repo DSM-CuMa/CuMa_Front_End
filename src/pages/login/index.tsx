@@ -2,6 +2,7 @@ import react, { useState } from "react";
 import axios from 'axios';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import {Cookies} from 'react-cookie';
 
 // Style
 import * as S from "./style";
@@ -15,9 +16,14 @@ function LoginPage():React.ReactElement {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    const cookies = new Cookies()
+    const setCookie = (name: string, value: string, option?: any) => {
+        return cookies.set(name, value, {...option})
+    }
+
     async function Login() {
-        axios.post("api url", {
-            accountId: accountId,
+        axios.post("/login", {
+            id: accountId,
             password: password,
         })
         .then((res) => {
@@ -37,8 +43,10 @@ function LoginPage():React.ReactElement {
                 icon: "success",
                 title: "로그인에 성공하였습니다.",
             });
-            localStorage.setItem("CuMa_atk", res.data.atk);
+            setCookie("atk", res.data.access_token)
+            setCookie("rtk", res.data.access_token)
             navigate("/map", {replace: true});
+            window.location.reload();
         })
         .catch((err) => {
             if(err.response){
@@ -98,7 +106,7 @@ function LoginPage():React.ReactElement {
                     </S.CheckBoxWrapper>
                 </S.InputWrapper>
                 <S.BtnWrapper>
-                    <S.SubmitBtn>확인</S.SubmitBtn>
+                    <S.SubmitBtn onClick={()=>Login()}>확인</S.SubmitBtn>
                 </S.BtnWrapper>
             </S.LoginWrapper>
             <S.MapImage>
