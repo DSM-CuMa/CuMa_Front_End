@@ -67,7 +67,7 @@ function LoginPage():React.ReactElement {
             });
             Toast.fire({
                 icon: "error",
-                title: "관리자 로그인에 실패하였습니다.",
+                title: "로그인에 실패하였습니다.",
             });
         })
     }
