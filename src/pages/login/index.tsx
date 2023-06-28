@@ -79,7 +79,7 @@ function LoginPage():React.ReactElement {
                 </S.PinImage>
                 <S.Title>로그인</S.Title>
                 <S.InputWrapper>
-                    <S.InputName>로그인</S.InputName>
+                    <S.InputName>아이디</S.InputName>
                     <S.Input 
                         type={"text"}
                         value={accountId}
